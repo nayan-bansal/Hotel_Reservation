@@ -1,10 +1,13 @@
 package Hotel;
 
-import java.util.ArrayList;
+import java.text.*;
+import java.util.*;
+
 
 public class HotelLog {
 
-	private ArrayList<Hotel> hotelbook = new ArrayList<>();
+	ArrayList<Hotel> hotelbook = new ArrayList<>();
+	//private SimpleDateFormat formatter = new SimpleDateFormat();
 	
 	
 	public void setHotelBook(ArrayList<Hotel> hotelbook) {
@@ -20,10 +23,9 @@ public class HotelLog {
 		hotelbook.add(hotel);
 	}
 	
-	public void printHotel() {
-			for(Hotel hotel : hotelbook)
+	public void printHotel() {	
+		for(Hotel hotel : hotelbook)
 			System.out.println(hotel);
 	}
-
 	
 }
