@@ -2,6 +2,7 @@ package Hotel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Scanner;
@@ -45,6 +46,8 @@ public class Hotel_Reservation_Main {
 			
 			e.printStackTrace();
 		}
+		
+		Calendar c = Calendar.getInstance();
 		
 		long time = (enddate.getTime() - startdate.getTime() )/1000/60/60/24 + 1;
 
