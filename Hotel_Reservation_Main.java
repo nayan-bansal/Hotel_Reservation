@@ -31,8 +31,16 @@ public class Hotel_Reservation_Main {
 		
 	}
 	
-	private static Hotel findcheapesthotel(String start_date, String end_date) {
+	private static void findcheapesthotel_weekdays() {
+		
 		//Start and End Dates
+		System.out.println("Enter the Check in Date in ddMMMYYYY Format: ");
+		String start_date = scan.next();
+		
+		System.out.println("Enter the Check Out Date in ddMMMYYYY Format: ");
+		String end_date = scan.next();
+		
+		
 		Date startdate = null;
 		Date enddate = null;
 		
@@ -47,17 +55,46 @@ public class Hotel_Reservation_Main {
 			e.printStackTrace();
 		}
 		
-		Calendar c = Calendar.getInstance();
+		Calendar checkin = Calendar.getInstance();
+		checkin.setTime(startdate);
+		
+		Calendar checkout = Calendar.getInstance();
+		checkout.setTime(enddate);
+		
+		
+		
+		int weekdays = 0;
+		
+		do {
+			if(checkin.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && checkin.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
+				weekdays++;
+			checkin.add(Calendar.DAY_OF_MONTH,1);
+		}
+		while(checkin.getTimeInMillis() <= checkout.getTimeInMillis());
+		
+		
 		
 		long time = (enddate.getTime() - startdate.getTime() )/1000/60/60/24 + 1;
 
-		Hotel cheapesthotel = log.hotelbook.stream().sorted(Comparator.comparing(Hotel :: getWeekday)).findFirst().orElse(null);	
+
+		for(Hotel hotel : log.hotelbook) {
+			long total_price  = weekdays*hotel.getWeekday();
+			hotel.setTotalPrice_weekdays(total_price);
+		}
 		
-		System.out.println(cheapesthotel.getWeekday());
-		long total_amount = time*cheapesthotel.getWeekday();
+		Hotel cheapesthotel = log.hotelbook.stream().sorted(Comparator.comparing(Hotel :: getTotalPrice_weekdays)).findFirst().orElse(null);	
+		System.out.println(cheapesthotel.getHotelName()+" is the Cheapest Hotel with Price $ "+cheapesthotel.getTotalPrice_weekdays()+" on Weekdays");
 		
-		cheapesthotel.setTotalPrice(total_amount);
-		return cheapesthotel;
+		
+		for(Hotel hotel : log.hotelbook) {
+			long total_price  = (time - weekdays)*hotel.getWeekend();
+			hotel.setTotalPrice_weekdays(total_price);
+		}
+		
+		Hotel cheapesthotel_weekend = log.hotelbook.stream().sorted(Comparator.comparing(Hotel :: getTotalPrice_weekend)).findFirst().orElse(null);	
+		System.out.println(cheapesthotel_weekend.getHotelName()+" is the Cheapest Hotel with Price $ "+cheapesthotel_weekend.getTotalPrice_weekdays()+" on Weekends");
+		
+		
 	}
 	
 	
@@ -75,14 +112,8 @@ public class Hotel_Reservation_Main {
 		HotelLog log = new HotelLog();
 		
 		//UC_2: Finding the cheapest Hotel in the given date
-		System.out.println("Enter the Check in Date in ddMMMYYYY Format: ");
-		String start_date = scan.next();
-		
-		System.out.println("Enter the Check Out Date in ddMMMYYYY Format: ");
-		String end_date = scan.next();
-		
-		Hotel cheap = findcheapesthotel(start_date, end_date);
-		System.out.println(cheap.getHotelName()+" is the Cheapest Hotel with Price $ "+cheap.getTotalPrice());
-		
+
+	 findcheapesthotel_weekdays();
+	
 	}
 }
