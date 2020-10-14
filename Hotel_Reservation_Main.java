@@ -75,24 +75,28 @@ public class Hotel_Reservation_Main {
 		
 		
 		long time = (enddate.getTime() - startdate.getTime() )/1000/60/60/24 + 1;
-
-
+		
 		for(Hotel hotel : log.hotelbook) {
-			long total_price  = weekdays*hotel.getWeekday();
+			long total_price  = (time - weekdays)*hotel.getWeekend() + weekdays*hotel.getWeekday();
 			hotel.setTotalPrice_weekdays(total_price);
 		}
 		
-		Hotel cheapesthotel = log.hotelbook.stream().sorted(Comparator.comparing(Hotel :: getTotalPrice_weekdays)).findFirst().orElse(null);	
-		System.out.println(cheapesthotel.getHotelName()+" is the Cheapest Hotel with Price $ "+cheapesthotel.getTotalPrice_weekdays()+" on Weekdays");
+		long price = log.hotelbook.get(2).getTotalPrice();  
+		int rating =3;
 		
-		
+		String name = null ;
 		for(Hotel hotel : log.hotelbook) {
-			long total_price  = (time - weekdays)*hotel.getWeekend();
-			hotel.setTotalPrice_weekdays(total_price);
+			if(hotel.getTotalPrice() <= price && hotel.getHotelRating() >= rating) {
+				price = hotel.getTotalPrice();
+				rating = hotel.getHotelRating();
+				name = hotel.getHotelName();
+			}
 		}
 		
-		Hotel cheapesthotel_weekend = log.hotelbook.stream().sorted(Comparator.comparing(Hotel :: getTotalPrice_weekend)).findFirst().orElse(null);	
-		System.out.println(cheapesthotel_weekend.getHotelName()+" is the Cheapest Hotel with Price $ "+cheapesthotel_weekend.getTotalPrice_weekdays()+" on Weekends");
+		
+		
+		//Hotel cheap = log.hotelbook.stream().sorted(Comparator.comparing(Hotel :: getTotalPrice)).findFirst().orElse(null);	
+		System.out.println(name+" is the Cheapest Hotel with best Rating and with Price $ "+price+" and Rating "+rating);
 		
 		
 	}
