@@ -34,9 +34,10 @@ public class Hotel_Reservation_Main {
 	private static void findcheapesthotel() {
 		
 		//Check for Premium Customer
-		System.out.println("Are you a Premium Customer?\nPress 1 for Yes\nPress 2 for No");
+		System.out.println("Are you a Premium Customer?\nPress 1 for No\nPress 2 for Yes\nPress 3 to Exit");
 		int choice = scan.nextInt();
-		
+		switch (choice) {
+		case 1:
 		//Start and End Dates
 		System.out.println("Enter the Check in Date in ddMMMYYYY Format: ");
 		String start_date = scan.next();
@@ -90,7 +91,7 @@ public class Hotel_Reservation_Main {
 		
 		String name = null ;
 		for(Hotel hotel : log.hotelbook) {
-			if( hotel.getHotelRating() >= rating) {
+			if( hotel.getHotelRating() >= rating ) {
 				price = hotel.getTotalPrice();
 				rating = hotel.getHotelRating();
 				name = hotel.getHotelName();
@@ -98,8 +99,75 @@ public class Hotel_Reservation_Main {
 		}
 		
 		System.out.println(name+" is the Cheapest Hotel with best Rating and with Price $ "+price+" and Rating "+rating);
-		
-		
+		break;
+		case 2:
+			//Start and End Dates
+			System.out.println("Enter the Check in Date in ddMMMYYYY Format: ");
+			String start_date_special = scan.next();
+			
+			System.out.println("Enter the Check Out Date in ddMMMYYYY Format: ");
+			String end_date_special = scan.next();
+			
+			
+			Date startdate_special = null;
+			Date enddate_special = null;
+			
+			try {
+			 startdate_special = new SimpleDateFormat("ddMMMyyyy").parse(start_date_special);
+			 enddate_special = new SimpleDateFormat("ddMMMyyyy").parse(end_date_special);
+			
+			}
+			
+			catch(ParseException e){
+				
+				e.printStackTrace();
+			}
+			
+			Calendar checkin_special = Calendar.getInstance();
+			checkin_special.setTime(startdate_special);
+			
+			Calendar checkout_special = Calendar.getInstance();
+			checkout_special.setTime(enddate_special);
+			
+			
+			
+			int weekdays_special = 0;
+			
+			do {
+				if(checkin_special.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY && checkin_special.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
+					weekdays_special++;
+				checkin_special.add(Calendar.DAY_OF_MONTH,1);
+			}
+			while(checkin_special.getTimeInMillis() <= checkout_special.getTimeInMillis());
+			
+			
+			
+			long time_special = (enddate_special.getTime() - startdate_special.getTime() )/1000/60/60/24 + 1;
+			
+			for(Hotel hotel : log.hotelbook) {
+				long total_price  = (time_special - weekdays_special)*hotel.getSpecialWeekend() + weekdays_special*hotel.getSpecialWeekday();
+				hotel.setTotalPrice_weekdays(total_price);
+			}
+			
+			long price_special = log.hotelbook.get(2).getTotalPrice();  
+			int rating_special =3;
+			
+			String name_special = null ;
+			for(Hotel hotel : log.hotelbook) {
+				if( hotel.getHotelRating() >= rating_special ) {
+					price_special = hotel.getTotalPrice();
+					rating_special = hotel.getHotelRating();
+					name_special = hotel.getHotelName();
+				}
+			}
+			
+			System.out.println(name_special+" is the Cheapest Hotel with best Rating and with Price $ "+price_special+" and Rating "+rating_special);
+			break;
+			default:
+				System.out.println("Invalid Option");
+				System.exit(0);
+				break;
+		}	
 	}
 	
 	
