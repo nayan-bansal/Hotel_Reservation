@@ -7,8 +7,6 @@ import java.util.*;
 public class HotelLog {
 
 	ArrayList<Hotel> hotelbook = new ArrayList<>();
-	//private SimpleDateFormat formatter = new SimpleDateFormat();
-	
 	
 	public void setHotelBook(ArrayList<Hotel> hotelbook) {
 		this.hotelbook = hotelbook; 
