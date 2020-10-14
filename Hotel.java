@@ -35,12 +35,24 @@ public class Hotel {
 		return total_amount;
 	}
 	
+	public void  setTotalPrice(long total_amount) {
+		this.total_amount = total_amount;
+	}
+	
+	public long getTotalPrice() {
+		return total_amount;
+	}
+	
 	public int getWeekday() {
 		return Weekday;
 	}
 	
 	public int getWeekend() {
 		return Weekend;
+	}
+	
+	public int getHotelRating() {
+		return HotelRating;
 	}
 	
 	@Override
