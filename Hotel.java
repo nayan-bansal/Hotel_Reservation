@@ -7,12 +7,24 @@ public class Hotel {
 	private int Weekend;
 	private long total_amount;
 	private int HotelRating;
+	private int SpecialWeekday;
+	private int SpecialWeekend;
 	
-	public Hotel(String HotelName, int Weekday, int Weekend, int HotelRating) {
+	public Hotel(String HotelName, int Weekday, int Weekend, int HotelRating, int SpecialWeekday, int SpecialWeekend) {
 		this.HotelName = HotelName;
 		this.Weekday = Weekday;
 		this.Weekend = Weekend;
 		this.HotelRating = HotelRating;
+		this.SpecialWeekday = SpecialWeekday;
+		this.SpecialWeekend = SpecialWeekend;
+	}
+	
+	public int getSpecialWeekday() {
+		return SpecialWeekday ;
+	}
+	
+	public int getSpecialWeekend() {
+		return SpecialWeekend;
 	}
 	
 	public String getHotelName() {
