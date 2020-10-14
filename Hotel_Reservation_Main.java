@@ -34,7 +34,11 @@ public class Hotel_Reservation_Main {
 	private static void findcheapesthotel() {
 		
 		//Check for Premium Customer
+<<<<<<< HEAD
+		System.out.println("Are you a Premium Customer?\nPress 1 for No\nPress 2 for Yes\nPress Any Other Key to Exit");
+=======
 		System.out.println("Are you a Premium Customer?\nPress 1 for No\nPress 2 for Yes\nPress 3 to Exit");
+>>>>>>> UC_9_Special_Customer
 		int choice = scan.nextInt();
 		switch (choice) {
 		case 1:
@@ -91,7 +95,11 @@ public class Hotel_Reservation_Main {
 		
 		String name = null ;
 		for(Hotel hotel : log.hotelbook) {
+<<<<<<< HEAD
+			if( hotel.getHotelRating() >= rating && hotel.getTotalPrice() <= price) {
+=======
 			if( hotel.getHotelRating() >= rating ) {
+>>>>>>> UC_9_Special_Customer
 				price = hotel.getTotalPrice();
 				rating = hotel.getHotelRating();
 				name = hotel.getHotelName();
@@ -155,10 +163,17 @@ public class Hotel_Reservation_Main {
 			String name_special = null ;
 			for(Hotel hotel : log.hotelbook) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				if( hotel.getHotelRating() >= rating_special ) {
 =======
 				if( hotel.getHotelRating() >= rating_special && hotel.getTotalPrice() <= price_special) {
 >>>>>>> UC_11_Loyal_Customer
+=======
+				if( hotel.getHotelRating() >= rating_special && hotel.getTotalPrice() <= price_special) {
+=======
+				if( hotel.getHotelRating() >= rating_special ) {
+>>>>>>> UC_9_Special_Customer
+>>>>>>> UC_12_Loyal_and_Regular_Customer
 					price_special = hotel.getTotalPrice();
 					rating_special = hotel.getHotelRating();
 					name_special = hotel.getHotelName();
@@ -166,10 +181,17 @@ public class Hotel_Reservation_Main {
 			}
 			
 <<<<<<< HEAD
+<<<<<<< HEAD
 			System.out.println(name_special+" is the Cheapest Hotel with best Rating and with Price $ "+price_special+" and Rating "+rating_special);
 =======
 			System.out.println(name_special+" is the Cheapest Hotel with best Rating and with Price $ "+price_special+" for Loyal Customer and Rating "+rating_special);
 >>>>>>> UC_11_Loyal_Customer
+=======
+			System.out.println(name_special+" is the Cheapest Hotel with best Rating and with Price $ "+price_special+" for Loyal Customer and Rating "+rating_special);
+=======
+			System.out.println(name_special+" is the Cheapest Hotel with best Rating and with Price $ "+price_special+" and Rating "+rating_special);
+>>>>>>> UC_9_Special_Customer
+>>>>>>> UC_12_Loyal_and_Regular_Customer
 			break;
 			default:
 				System.out.println("Invalid Option");
