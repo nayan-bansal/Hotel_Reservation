@@ -154,7 +154,7 @@ public class Hotel_Reservation_Main {
 			
 			String name_special = null ;
 			for(Hotel hotel : log.hotelbook) {
-				if( hotel.getHotelRating() >= rating_special ) {
+				if( hotel.getHotelRating() >= rating_special && hotel.getTotalPrice() <= price_special) {
 					price_special = hotel.getTotalPrice();
 					rating_special = hotel.getHotelRating();
 					name_special = hotel.getHotelName();
