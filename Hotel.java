@@ -17,11 +17,19 @@ public class Hotel {
 		return HotelName;
 	}
 	
-	public void  setTotalPrice(long total_amount) {
+	public void  setTotalPrice_weekdays(long total_amount) {
 		this.total_amount = total_amount;
 	}
 	
-	public long getTotalPrice() {
+	public long getTotalPrice_weekdays() {
+		return total_amount;
+	}
+
+	public void  setTotalPrice_weekend(long total_amount) {
+		this.total_amount = total_amount;
+	}
+	
+	public long getTotalPrice_weekend() {
 		return total_amount;
 	}
 	
