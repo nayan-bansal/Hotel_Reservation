@@ -34,7 +34,7 @@ public class Hotel_Reservation_Main {
 	private static void findcheapesthotel() {
 		
 		//Check for Premium Customer
-		System.out.println("Are you a Premium Customer?\nPress 1 for No\nPress 2 for Yes\nPress 3 to Exit");
+		System.out.println("Are you a Premium Customer?\nPress 1 for No\nPress 2 for Yes\nPress Any Other Key to Exit");
 		int choice = scan.nextInt();
 		switch (choice) {
 		case 1:
@@ -91,7 +91,7 @@ public class Hotel_Reservation_Main {
 		
 		String name = null ;
 		for(Hotel hotel : log.hotelbook) {
-			if( hotel.getHotelRating() >= rating ) {
+			if( hotel.getHotelRating() >= rating && hotel.getTotalPrice() <= price) {
 				price = hotel.getTotalPrice();
 				rating = hotel.getHotelRating();
 				name = hotel.getHotelName();
