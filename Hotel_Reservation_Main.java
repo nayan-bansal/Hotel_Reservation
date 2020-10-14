@@ -154,14 +154,22 @@ public class Hotel_Reservation_Main {
 			
 			String name_special = null ;
 			for(Hotel hotel : log.hotelbook) {
+<<<<<<< HEAD
 				if( hotel.getHotelRating() >= rating_special ) {
+=======
+				if( hotel.getHotelRating() >= rating_special && hotel.getTotalPrice() <= price_special) {
+>>>>>>> UC_11_Loyal_Customer
 					price_special = hotel.getTotalPrice();
 					rating_special = hotel.getHotelRating();
 					name_special = hotel.getHotelName();
 				}
 			}
 			
+<<<<<<< HEAD
 			System.out.println(name_special+" is the Cheapest Hotel with best Rating and with Price $ "+price_special+" and Rating "+rating_special);
+=======
+			System.out.println(name_special+" is the Cheapest Hotel with best Rating and with Price $ "+price_special+" for Loyal Customer and Rating "+rating_special);
+>>>>>>> UC_11_Loyal_Customer
 			break;
 			default:
 				System.out.println("Invalid Option");
