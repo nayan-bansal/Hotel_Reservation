@@ -6,11 +6,13 @@ public class Hotel {
 	private int Weekday;
 	private int Weekend;
 	private long total_amount;
+	private int HotelRating;
 	
-	public Hotel(String HotelName, int Weekday, int Weekend) {
+	public Hotel(String HotelName, int Weekday, int Weekend, int HotelRating) {
 		this.HotelName = HotelName;
 		this.Weekday = Weekday;
 		this.Weekend = Weekend;
+		this.HotelRating = HotelRating;
 	}
 	
 	public String getHotelName() {
