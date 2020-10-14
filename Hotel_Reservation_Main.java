@@ -16,13 +16,13 @@ public class Hotel_Reservation_Main {
 		
 		//Adding The List of Hotels
 		
-		Hotel LakeWood = new Hotel("LakeWood", 110, 90,3);
+		Hotel LakeWood = new Hotel("LakeWood", 110, 90,3,80,80);
 		log.addHotelBook(LakeWood);
 		
-		Hotel BridgeWood = new Hotel("BridgeWood", 160, 60,4);
+		Hotel BridgeWood = new Hotel("BridgeWood", 160, 60,4,110,50);
 		log.addHotelBook(BridgeWood);
 		
-		Hotel RidgeWood = new Hotel("RidgeWood", 220, 150,5);
+		Hotel RidgeWood = new Hotel("RidgeWood", 220, 150,5,100,40);
 		log.addHotelBook(RidgeWood);
 		
 		//Printing Hotel List and Rates
@@ -31,7 +31,11 @@ public class Hotel_Reservation_Main {
 		
 	}
 	
-	private static void findcheapesthotel_weekdays() {
+	private static void findcheapesthotel() {
+		
+		//Check for Premium Customer
+		System.out.println("Are you a Premium Customer?\nPress 1 for Yes\nPress 2 for No");
+		int choice = scan.nextInt();
 		
 		//Start and End Dates
 		System.out.println("Enter the Check in Date in ddMMMYYYY Format: ");
@@ -94,6 +98,8 @@ public class Hotel_Reservation_Main {
 		}
 		
 		System.out.println(name+" is the Cheapest Hotel with best Rating and with Price $ "+price+" and Rating "+rating);
+		
+		
 	}
 	
 	
@@ -110,7 +116,7 @@ public class Hotel_Reservation_Main {
 		
 		//UC_2: Finding the cheapest Hotel in the given date
 
-	 findcheapesthotel_weekdays();
+	 findcheapesthotel();
 	
 	}
 }
