@@ -86,22 +86,15 @@ public class Hotel_Reservation_Main {
 		
 		String name = null ;
 		for(Hotel hotel : log.hotelbook) {
-			if(hotel.getTotalPrice() <= price && hotel.getHotelRating() >= rating) {
+			if( hotel.getHotelRating() >= rating) {
 				price = hotel.getTotalPrice();
 				rating = hotel.getHotelRating();
 				name = hotel.getHotelName();
 			}
 		}
 		
-		
-		
-		//Hotel cheap = log.hotelbook.stream().sorted(Comparator.comparing(Hotel :: getTotalPrice)).findFirst().orElse(null);	
 		System.out.println(name+" is the Cheapest Hotel with best Rating and with Price $ "+price+" and Rating "+rating);
-		
-		
 	}
-	
-	
 	
 	
 	public static void main(String[] args) throws Exception {
