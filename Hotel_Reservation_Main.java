@@ -16,13 +16,13 @@ public class Hotel_Reservation_Main {
 		
 		//Adding The List of Hotels
 		
-		Hotel LakeWood = new Hotel("LakeWood", 110, 90);
+		Hotel LakeWood = new Hotel("LakeWood", 110, 90,3);
 		log.addHotelBook(LakeWood);
 		
-		Hotel BridgeWood = new Hotel("BridgeWood", 160, 60);
+		Hotel BridgeWood = new Hotel("BridgeWood", 160, 60,4);
 		log.addHotelBook(BridgeWood);
 		
-		Hotel RidgeWood = new Hotel("RidgeWood", 220, 150);
+		Hotel RidgeWood = new Hotel("RidgeWood", 220, 150,5);
 		log.addHotelBook(RidgeWood);
 		
 		//Printing Hotel List and Rates
